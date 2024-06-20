@@ -1,17 +1,39 @@
-name: Docker Prod
+name: Self-hosted Runner Workflow
 
 on:
-  workflow_dispatch:
   push:
-    branches: [master]
+    branches:
+      - main  # Replace with your branch name
+  pull_request:
+    branches:
+      - main  # Replace with your branch name
+
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: self-hosted  # Specifies to use a self-hosted runner
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Create env file (ROOT)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      - name: Docker run
-        run: docker compose up -d --force-recreate --build
+      # Add more steps as needed for your specific build/test/deploy process
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      # Example of deploying to a server
+      - name: Deploy
+        run: |
+          echo add other actions to build,
+          echo test, and deploy your projekt,.
+
