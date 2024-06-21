@@ -34,6 +34,7 @@ export default function Home() {
     setQuestion("");
   };
   
+  
 
   return (
         <div className="flex justify-center flex-col items-center h-screen bg-white">
