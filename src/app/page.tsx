@@ -36,7 +36,7 @@ export default function Home() {
   
 
   return (
-    <div className="flex justify-center flex-col items-center h-screen bg-white">
+        <div className="flex justify-center flex-col items-center h-screen bg-white">
       <h1 className="text-2xl font-bold">Porsche Chatbot</h1>
       <div className="w-full max-w-2xl space-y-4 border px-4 py-2 shadow-lg rounded-xl">
         <div className="overflow-y-auto max-h-96 p-4">
