@@ -9,7 +9,7 @@ import { AiOutlineEnter } from "react-icons/ai";
 
 
 export default function Home() {
-  console.log("test");
+  console.log("tesasdt");
   const [question, setQuestion] = useState<string>("");
   const [conversation, setConversation] = useState<
     { type: string; text: string }[]
