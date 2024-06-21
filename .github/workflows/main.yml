@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main # oder der Branch, den du verwenden möchtest
+      - master # oder der Branch, den du verwenden möchtest
 
 jobs:
   deploy:
