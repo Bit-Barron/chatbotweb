@@ -6,7 +6,7 @@ import { Button } from "@/components/elements/Button";
 import { Input } from "@/components/elements/Input";
 import { useState } from "react";
 import { AiOutlineEnter } from "react-icons/ai";
-import Recorder from "recorder-js";
+
 
 export default function Home() {
   console.log("test");
