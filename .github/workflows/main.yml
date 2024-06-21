@@ -1,21 +1,16 @@
-name: Deploy to Server
+name: Docker Prod
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - master # oder der Branch, den du verwenden möchtest
+    branches: [master]
 
 jobs:
-  deploy:
+  build:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Update application on server
-        run: |
-          cd repository/chatbotweb/
-          git pull origin main
-          docker-compose down
-          docker-compose up -d --build
+      - name: Docker run
+        run: docker-compose up -d --force-recreate --build
