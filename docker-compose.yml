@@ -9,10 +9,10 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.demo.rule=Host(`chatbot.barron.agency`)"
-      - "traefik.http.routers.demo.entrypoints=websecure"
-      - "traefik.http.routers.demo.tls.certresolver=letsencrypt"
-      - "traefik.http.services.demo.loadbalancer.server.port=3000"
+      - "traefik.http.routers.chatbot-web.rule=Host(`chatbot.barron.agency`)"
+      - "traefik.http.routers.chatbot-web.entrypoints=websecure"
+      - "traefik.http.routers.chatbot-web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.chatbot-web.loadbalancer.server.port=3000"
 
     networks:
       - proxy
