@@ -12,10 +12,6 @@ services:
       - "traefik.http.routers.chatbot-web.entrypoints=websecure"
       - "traefik.http.routers.chatbot-web.tls.certresolver=letsencrypt"
       - "traefik.http.services.chatbot-web.loadbalancer.server.port=3000"
-      - "traefik.http.routers.chatbot-web.middlewares=chatbot-web"
-      - "traefik.http.middlewares.chatbot-web.headers.accessControlAllowOrigin=*"
-      - "traefik.http.middlewares.chatbot-web.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.http.middlewares.chatbot-web.headers.sslRedirect=true"
     networks:
       - proxy
 
