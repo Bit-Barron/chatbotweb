@@ -16,7 +16,9 @@ services:
       - "traefik.http.routers.chatbot-web-secure.entrypoints=websecure"
       - "traefik.http.routers.chatbot-web-secure.tls=true"
 
+    networks:
+      - traefik
+
 networks:
-  proxy:
-    external: false
-    name: proxy
+  traefik:
+    external: true
