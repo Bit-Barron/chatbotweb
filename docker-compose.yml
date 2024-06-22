@@ -20,6 +20,5 @@ services:
       - proxy
 
 networks:
-  proxy:
+  traefik:
     external: true
-    name: proxy
