@@ -6,8 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: chatbot-web
-    ports:
-      - "3000:3000"
+
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.chatbot-web.rule=Host(`chatbot.barron.agency`)"
