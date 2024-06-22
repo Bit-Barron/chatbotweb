@@ -17,8 +17,8 @@ services:
       - "traefik.http.routers.chatbot-web-secure.tls=true"
 
     networks:
-      - traefik
+      - proxy
 
 networks:
-  traefik:
+  proxy:
     external: true
