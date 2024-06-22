@@ -1,19 +1,24 @@
 version: "3.8"
 
 services:
-  chatbot-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: chatbot-web
-
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.chatbot-web.rule=Host(`cryptotrack.barron.agency`)"
-      - "traefik.http.routers.chatbot-web.entrypoints=websecure"
-      - "traefik.http.routers.chatbot-web.tls.certresolver=letsencrypt"
-      - "traefik.http.services.chatbot-web.loadbalancer.server.port=3000"
-
+  traefik:
+    image: traefik:v2.4
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.email=your-valid-email@example.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./letsencrypt:/letsencrypt"
     networks:
       - proxy
 
