@@ -15,8 +15,8 @@ services:
       - "traefik.http.routers.chatbot-web-secure.rule=Host(`chatbot.barron.agency`)"
       - "traefik.http.routers.chatbot-web-secure.entrypoints=websecure"
       - "traefik.http.routers.chatbot-web-secure.tls=true"
-    networks:
-      - webnet
 
 networks:
-  webnet:
+  proxy:
+    external: false
+    name: proxy
