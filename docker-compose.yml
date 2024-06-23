@@ -8,20 +8,14 @@ services:
     container_name: chatbotweb
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.chatbotweb.entrypoints=http"
-      - "traefik.http.routers.chatbotweb.rule=Host(`chatbot.barron.agency`)"
-      - "traefik.http.middlewares.chatbotweb-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.chatbotweb.middlewares=chatbotweb-https-redirect"
-      - "traefik.http.routers.chatbotweb-secure.entrypoints=https"
-      - "traefik.http.routers.chatbotweb-secure.rule=Host(`chatbot.barron.agency`)"
-      - "traefik.http.routers.chatbotweb-secure.tls=true"
-      - "traefik.http.routers.chatbotweb-secure.tls.certresolver=http"
-      - "traefik.http.routers.chatbotweb-secure.service=chatbotweb"
+      - "traefik.http.routers.chatbotweb.rule=Host(`cryptotrack.barron.agency`)"
+      - "traefik.http.routers.chatbotweb.entrypoints=web"
       - "traefik.http.services.chatbotweb.loadbalancer.server.port=3000"
-      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.chatbotweb-secure.rule=Host(`cryptotrack.barron.agency`)"
+      - "traefik.http.routers.chatbotweb-secure.entrypoints=websecure"
+      - "traefik.http.routers.chatbotweb-secure.tls=true"
     networks:
       - webnet
 
 networks:
-  proxy:
-    external: true
+  webnet:
