@@ -8,19 +8,20 @@ services:
     container_name: chatbotweb
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wp.entrypoints=http"
-      - "traefik.http.routers.wp.rule=Host(`wordpress.euredomain.de`)"
-      - "traefik.http.middlewares.wp-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.wp.middlewares=wp-https-redirect"
-      - "traefik.http.routers.wp-secure.entrypoints=https"
-      - "traefik.http.routers.wp-secure.rule=Host(`wordpress.euredomain.de`)"
-      - "traefik.http.routers.wp-secure.tls=true"
-      - "traefik.http.routers.wp-secure.tls.certresolver=http"
-      - "traefik.http.routers.wp-secure.service=wp"
-      - "traefik.http.services.wp.loadbalancer.server.port=80"
+      - "traefik.http.routers.chatbotweb.entrypoints=http"
+      - "traefik.http.routers.chatbotweb.rule=Host(`chatbot.barron.agency`)"
+      - "traefik.http.middlewares.chatbotweb-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.chatbotweb.middlewares=chatbotweb-https-redirect"
+      - "traefik.http.routers.chatbotweb-secure.entrypoints=https"
+      - "traefik.http.routers.chatbotweb-secure.rule=Host(`chatbot.barron.agency`)"
+      - "traefik.http.routers.chatbotweb-secure.tls=true"
+      - "traefik.http.routers.chatbotweb-secure.tls.certresolver=http"
+      - "traefik.http.routers.chatbotweb-secure.service=chatbotweb"
+      - "traefik.http.services.chatbotweb.loadbalancer.server.port=3000"
       - "traefik.docker.network=proxy"
     networks:
       - webnet
 
 networks:
-  webnet:
+  proxy:
+    external: true
