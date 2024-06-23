@@ -1,21 +1,21 @@
 version: "3.8"
 
 services:
-  chatbot-web:
+  chatbotweb:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: chatbot-web
+    container_name: chatbotweb
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.chatbot-web.rule=Host(`cryptotrack.barron.agency`)"
-      - "traefik.http.routers.chatbot-web.entrypoints=websecure"
-      - "traefik.http.routers.chatbot-web.tls.certresolver=letsencrypt"
-      - "traefik.http.services.chatbot-web.loadbalancer.server.port=3000"
+      - "traefik.http.routers.chatbotweb.rule=Host(`cryptotrack.barron.agency`)"
+      - "traefik.http.routers.chatbotweb.entrypoints=web"
+      - "traefik.http.services.chatbotweb.loadbalancer.server.port=3000"
+      - "traefik.http.routers.chatbotweb-secure.rule=Host(`cryptotrack.barron.agency`)"
+      - "traefik.http.routers.chatbotweb-secure.entrypoints=websecure"
+      - "traefik.http.routers.chatbotweb-secure.tls=true"
     networks:
-      - proxy
+      - webnet
 
 networks:
-  proxy:
-    external: true
-    name: proxy
+  webnet:
