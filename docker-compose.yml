@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: chatbotweb
     labels:
+    
       - "traefik.enable=true"
       - "traefik.http.routers.chatbotweb.rule=Host(`cryptotrack.barron.agency`)"
       - "traefik.http.routers.chatbotweb.entrypoints=web"
