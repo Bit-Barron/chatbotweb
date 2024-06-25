@@ -3,7 +3,7 @@ name: Docker Prod
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master]
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
